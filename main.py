@@ -14,12 +14,12 @@ def main():
     print('You find yourself on a quest from the King to explore this so called "abandoned" castle.')
     print('Wearing your protective plate armor and wielding your trusty long sword, '
           'you approach the large castle doors.')
-    #time.sleep(2)
+    time.sleep(3)
     print('You can see a feint light inside and hear what appears to be the rattling of bones.')
-    #time.sleep(3)
+    time.sleep(3)
     print('You wonder to yourself if you should enter the castle as you have heard stories '
-          'of otherworldly horrors living inside')
-    #time.sleep(2)
+          'of otherworldly horrors living inside.')
+    time.sleep(2)
     start()
 
 
@@ -38,7 +38,7 @@ def start():
 
 def room_one():
     print('You enter through the large doors and see that you can only go "North" or "East" to move on.')
-    user_direction = input('Which direction do you want to go? (North|East')
+    user_direction = input('Which direction do you want to go? (North|East)')
     if user_direction == 'North' or user_direction == 'north':
         room_two()
     elif user_direction == 'East' or user_direction == 'east':
@@ -158,7 +158,7 @@ def room_four():
     player_backpack.append('Skeleton Key')
     # print(player_backpack)
     print('The familiar sound of bones rattling is coming from the next room.')
-    print('What direction would you like to go now? (East|South')
+    print('What direction would you like to go now? (East|South)')
     user_direction = input()
     if user_direction == 'East' or user_direction == 'east':
         print('You approach the door, weapon ready because you know a fight is coming.')
@@ -206,8 +206,8 @@ def boss_room():
     print('')
 
 
-#main()
+main()
 #room_two()
-room_three()
+#room_three()
 #room_four()
 #room_five()
