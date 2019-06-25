@@ -38,7 +38,7 @@ def start():
 
 def room_one():
     print('You enter through the large doors and see that you can only go "North" or "East" to move on.')
-    user_direction = input('Which direction do you want to go?')
+    user_direction = input('Which direction do you want to go? (North|East')
     if user_direction == 'North' or user_direction == 'north':
         room_two()
     elif user_direction == 'East' or user_direction == 'east':
@@ -50,15 +50,14 @@ def room_one():
 
 def room_two():
     global skeleton_one_hp
-    # skeleton_alive = True
+    global player_hp
 
     if skeleton_one_hp >= 1:
         print('A skeleton appears to blocking your progression to other rooms.')
         time.sleep(1)
-        print('Quickly dispatch your foe to move onto the next room.')
-        time.sleep(1)
+        print('Quickly dispatch your foe to move on.')
     else:
-        print('The skeleton from earlier is still dead, good.')
+        print('The skeleton remains a pile of bones.')
         time.sleep(1)
         print('You may move on. Your choices are "North" or "East" again.')
         user_direction = input()
@@ -68,37 +67,107 @@ def room_two():
             room_seven()
         else:
             print('Please enter a valid direction')
-            room_one()
+            room_two()
 
     while skeleton_one_hp > 0:
         print('The skeleton has %sHP left' % skeleton_one_hp)
-        damage = random.randint(0, 2)
-        if damage == 0:
-            print('The skeleton dodges your attack.')
+        player_damage = random.randint(0, 2)
+        if player_damage == 0:
+            print('The skeleton dodges your attack and takes a swing at you, dealing 1 damage.')
+            player_hp = player_hp - 1
             time.sleep(1)
             print('You swing you sword again.')
             time.sleep(1)
-        elif damage == 1:
+        elif player_damage == 1:
             damage_hit = random.randint(1, 5)
             print('Your sword connects and hits the skeleton for %s damage' % damage_hit)
             skeleton_one_hp = skeleton_one_hp - damage_hit
-            print('The skeleton has %sHP left' % skeleton_one_hp)
+            # print('The skeleton has %sHP left' % skeleton_one_hp)
             if skeleton_one_hp <= 0:
                 room_two()
         else:
-            print('In one mighty swing of your sword, you slice right through the skeleton and'
+            print('With a mighty swing of your sword, you slice right through the skeleton and'
                   ' send him back to the grave.')
             skeleton_one_hp = 0
             room_two()
 
 
 def room_three():
-    print('Room 3')
+    global player_hp
+    global player_backpack
+
+    print('You find yourself in another dark and cold room with only a door in front of you.')
+    time.sleep(1)
+    print('Thankfully, the room appears to be empty. You question your choices of taking this quest.')
+    time.sleep(1)
+    if player_hp < 25:
+        print('You notice you are wounded from the previous skeleton.')
+        time.sleep(1)
+        print('Would you like to drink a health potion? (Yes|No)')
+        user_decision = input()
+        if user_decision == 'Yes' or user_decision == 'yes':
+            player_hp = 25
+            # print(player_backpack)
+            # print(player_hp)
+            print('What direction do you want to go now? (North|South)')
+            user_direction = input()
+            if user_direction == 'North' or user_direction == 'north':
+                print('You push the heavy door open revealing the next room.')
+                room_four()
+            elif user_direction == 'South' or user_direction == 'south':
+                print('You turn back and return to the previous room.')
+                room_two()
+            else:
+                print('Please enter a valid input')
+                room_three()
+        elif user_decision == 'No' or user_decision == 'no':
+            print('Good idea, save those for later if something larger comes along.')
+            print('What direction do you want to go now? (North|South)')
+            user_direction = input()
+            if user_direction == 'North' or user_direction == 'north':
+                print('You push the heavy door open revealing the next room.')
+                room_four()
+            elif user_direction == 'South' or user_direction == 'south':
+                print('You turn back and return to the previous room.')
+                room_two()
+        else:
+            print('Please enter a valid input.')
+            room_three()
+    else:
+        print('What direction do you want to go now? (North|South)')
+        user_direction = input()
+        if user_direction == 'North' or user_direction == 'north':
+            print('You push the heavy door open revealing the next room.')
+            room_four()
+        elif user_direction == 'South' or user_direction == 'south':
+            print('You turn back and return to the previous room.')
+            room_two()
+        else:
+            print('Please enter a valid input')
+            room_three()
 
 
 def room_four():
-    damage = random.randint(0, 2)
-    print(damage)
+    global player_backpack
+
+    print('Entering the room, you notice light shining through a small window.')
+    print('The light is illuminating a small pedestal and what appears to be a shiny skeleton key.')
+    time.sleep(3)
+    print('You hesitate, but take the key and add it to your pack.')
+    print('You think to yourself how this might be important later on.')
+    player_backpack.append('Skeleton Key')
+    # print(player_backpack)
+    print('The familiar sound of bones rattling is coming from the next room.')
+    print('What direction would you like to go now? (East|South')
+    user_direction = input()
+    if user_direction == 'East' or user_direction == 'east':
+        print('You approach the door, weapon ready because you know a fight is coming.')
+        room_five()
+    elif user_direction == 'South' or user_direction == 'south':
+        print('You return to the previous room.')
+    else:
+        print('Please enter a valid input.')
+        room_four()
 
 
 def room_five():
@@ -138,4 +207,7 @@ def boss_room():
 
 
 #main()
-room_two()
+#room_two()
+room_three()
+#room_four()
+#room_five()
