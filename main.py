@@ -1,5 +1,6 @@
 import random
 import time
+from PIL import Image
 
 player_hp = 25
 skeleton_one_hp = 10
@@ -37,6 +38,8 @@ def start():
 
 
 def room_one():
+    room_one_image = Image.open('images/Room 1.png')
+    room_one_image.show()
     print('You enter through the large doors and see that you can only go "North" or "East" to move on.')
     user_direction = input('Which direction do you want to go? (North|East)')
     if user_direction == 'North' or user_direction == 'north':
@@ -51,6 +54,9 @@ def room_one():
 def room_two():
     global skeleton_one_hp
     global player_hp
+
+    room_two_image = Image.open('images/Room 2.png')
+    room_two_image.show()
 
     if skeleton_one_hp >= 1:
         print('A skeleton appears to blocking your progression to other rooms.')
@@ -74,14 +80,16 @@ def room_two():
         player_damage = random.randint(0, 2)
         if player_damage == 0:
             print('The skeleton dodges your attack and takes a swing at you, dealing 1 damage.')
+            time.sleep(2)
             player_hp = player_hp - 1
             time.sleep(1)
             print('You swing you sword again.')
-            time.sleep(1)
+            time.sleep(2)
         elif player_damage == 1:
             damage_hit = random.randint(1, 5)
             print('Your sword connects and hits the skeleton for %s damage' % damage_hit)
             skeleton_one_hp = skeleton_one_hp - damage_hit
+            time.sleep(2)
             # print('The skeleton has %sHP left' % skeleton_one_hp)
             if skeleton_one_hp <= 0:
                 room_two()
@@ -95,6 +103,9 @@ def room_two():
 def room_three():
     global player_hp
     global player_backpack
+
+    room_three_image = Image.open('images/Room 3.png')
+    room_three_image.show()
 
     print('You find yourself in another dark and cold room with only a door in front of you.')
     time.sleep(1)
@@ -150,6 +161,9 @@ def room_three():
 def room_four():
     global player_backpack
 
+    room_four_image = Image.open('images/Room 4.png')
+    room_four_image.show()
+
     print('Entering the room, you notice light shining through a small window.')
     print('The light is illuminating a small pedestal and what appears to be a shiny skeleton key.')
     time.sleep(3)
@@ -171,41 +185,54 @@ def room_four():
 
 
 def room_five():
-    print('')
+    room_five_image = Image.open('images/Room 5.png')
+    room_five_image.show()
 
 
 def room_six():
-    print('')
+    room_six_image = Image.open('images/Room 6.png')
+    room_six_image.show()
 
 
 def room_seven():
-    print('')
+    room_seven_image = Image.open('images/Room 7.png')
+    room_seven_image.show()
 
 
 def room_eight():
-    print('')
+    room_eight_image = Image.open('images/Room 8.png')
+    room_eight_image.show()
 
 
 def room_nine():
-    print('')
+    room_nine_image = Image.open('images/Room 9.png')
+    room_nine_image.show()
 
 
 def room_ten():
-    print('')
+    room_ten_image = Image.open('images/Room 10.png')
+    room_ten_image.show()
 
 
 def eleven():
-    print('')
+    room_one_image = Image.open('images/Room 11.png')
+    room_one_image.show()
 
 
 def room_twelve():
+    room_twelve_image = Image.open('images/Room 12.png')
+    room_twelve_image.show()
+
     print('')
 
 
 def boss_room():
-    print('')
+    room_thirteen_image = Image.open('images/Room 13.png')
+    room_thirteen_image.show()
 
 
+
+#room_one()
 main()
 #room_two()
 #room_three()
