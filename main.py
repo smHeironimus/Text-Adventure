@@ -710,7 +710,7 @@ def congrats():
     print('Would you like to play again? (Yes|No)')
     user_decision = input()
     if user_decision == 'Yes' or user_decision == 'yes':
-        start()
+        main()
     elif user_decision == 'No' or user_decision == 'no':
         print('Thank you for playing.')
         time.sleep(2)
@@ -719,6 +719,8 @@ def congrats():
         print('Please enter a valid input.')
         congrats()
 
+
+main()
 
 # def test():
 #     global player_backpack
